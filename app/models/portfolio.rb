@@ -1,5 +1,6 @@
 class Portfolio < ApplicationRecord
 	has_many :technologis
+	accepts_nested_attributes_for :technologis, reject_if: lambda { |attrs| attrs['name'].blank? }
 	validates_presence_of :body, :title, :main_image, :thumb_image
 
 	#define 1 way the custom scope of the filter 
