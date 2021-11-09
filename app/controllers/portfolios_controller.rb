@@ -10,7 +10,9 @@ class PortfoliosController < ApplicationController
     @angular_portfolio_items = Portfolio.angular
   end
   def new
-    @portfolio_items = Portfolio.new 
+    @portfolio_items = Portfolio.new
+    # adding new field for multiple attributes of techologies 
+    3.times {@portfolio_items.technologis.build}
   end
 
   def create # when form is submitted it html code shows that behind the scene it calls the create method
@@ -57,7 +59,7 @@ class PortfoliosController < ApplicationController
 
   # we can add this method body direct inplace of its call
   def portfolio_param
-     params.require(:portfolio).permit(:title,:subtitle,:body)
+     params.require(:portfolio).permit(:title,:subtitle,:body, technologis_attributes: [:name])
   end
 
   # we can add this method body direct inplace of its call
